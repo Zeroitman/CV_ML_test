@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "cv-ml-test"
+version = "0.1.0"
+description = ""
+authors = ["borsh130894 borsh130894@gmail.com"]
+packages = [
+    {include = "main"}
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4"
+ffmpeg = "^1.4"
+scikit-learn = "^1.7.0"
+albumentations = "^2.0.8"
+tqdm = "^4.67.1"
+ultralytics = "^8.3.159"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
