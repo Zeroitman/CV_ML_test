@@ -1,0 +1,23 @@
+from ultralytics import YOLO
+from .main import VIDEO_PATH
+
+
+def predict_model(video_path):
+    model = YOLO('runs/custom_yolo_training7/weights/best.pt')
+
+    for result in model.predict(
+            source=video_path,  # путь к видео
+            save=True,
+            conf=0.3,  # минимальный threshold
+            stream=True  # не показывать в реальном времени
+        ):
+        print(result)
+
+
+def main():
+    video_path = f'{VIDEO_PATH}/2_1.MOV'
+    predict_model(video_path)
+
+
+if __name__ == "__main__":
+    main()
