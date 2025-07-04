@@ -1,0 +1,8 @@
+path: media/dataset
+train: images/train_aug
+val: images/val
+test: images/test
+
+nc: 6
+names: ['Borsch', 'Greek_salad', 'Meat_set', 'Pita_bread', 'Salad', 'Yellow_soup']
+
