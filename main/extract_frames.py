@@ -9,7 +9,7 @@ def extract_frames(file_name, fps=1):
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
-    output_pattern = os.path.join(output_path, "frame_%05d.jpg")
+    output_pattern = os.path.join(output_path, f"frame_%05d_{file_name}.jpg")
 
     command = [
         'ffmpeg',
@@ -29,7 +29,7 @@ def extract_frames(file_name, fps=1):
 
 
 def main():
-    file_name = "2_1.MOV"
+    file_name = "3_2.MOV"
     extract_frames(file_name, fps=1)
 
 if __name__ == "__main__":

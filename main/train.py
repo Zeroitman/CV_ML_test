@@ -2,20 +2,20 @@ from ultralytics import YOLO
 
 
 def train_model(name):
-    model = YOLO('yolo11s.pt')
+    model = YOLO('yolo11n.pt')
 
     model.train(
         data='dataset.yaml',
         name=name,
         project='runs',
-        epochs=50,
-        imgsz=640,
-        batch=4
+        epochs=40,
+        imgsz=448,
+        batch=-1
     )
 
 
 def main():
-    name = 'custom_yolo_training'
+    name = 'my_result'
     train_model(name)
 
 
