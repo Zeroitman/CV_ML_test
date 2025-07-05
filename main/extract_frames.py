@@ -9,12 +9,13 @@ def extract_frames(file_name, fps=1):
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
-    output_pattern = os.path.join(output_path, "frame_%05d.png")
+    output_pattern = os.path.join(output_path, "frame_%05d.jpg")
 
     command = [
         'ffmpeg',
         '-i', video_file,
         '-vf', f'fps={fps}',
+        '-qscale:v', '2',
         output_pattern
     ]
 

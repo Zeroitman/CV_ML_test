@@ -5,7 +5,7 @@ from tqdm import tqdm
 from .main import MEDIA_PATH
 
 
-def augmentation(augmentation_count=10):
+def augmentation(augmentation_count):
     INPUT_IMAGES_DIR = f'{MEDIA_PATH}/dataset/images/train'
     INPUT_LABELS_DIR = f'{MEDIA_PATH}/dataset/labels/train'
     OUTPUT_IMAGES_DIR = f'{MEDIA_PATH}/dataset/images/train_aug/'
@@ -25,13 +25,13 @@ def augmentation(augmentation_count=10):
 
     # Цикл по файлам
     for filename in tqdm(os.listdir(INPUT_IMAGES_DIR)):
-        if not filename.endswith('.png'):
+        if not filename.endswith('.jpg'):
             continue
 
         img_path = os.path.join(INPUT_IMAGES_DIR, filename)
         label_path = os.path.join(
             INPUT_LABELS_DIR,
-            filename.replace('.png', '.txt')
+            filename.replace('.jpg', '.txt')
         )
 
         # Пропустить, если нет аннотаций
@@ -59,14 +59,14 @@ def augmentation(augmentation_count=10):
             aug_labels = augmented['class_labels']
 
             # Сохраняем изображение
-            new_img_name = filename.replace('.png', f'_aug{i}.png')
+            new_img_name = filename.replace('.jpg', f'_aug{i}.jpg')
             new_img_path = os.path.join(OUTPUT_IMAGES_DIR, new_img_name)
             cv2.imwrite(new_img_path, aug_img)
 
             # Сохраняем аннотации
             new_label_path = os.path.join(
                 OUTPUT_LABELS_DIR,
-                new_img_name.replace('.png', '.txt')
+                new_img_name.replace('.jpg', '.txt')
             )
             with open(new_label_path, 'w') as f:
                 for bbox, cls in zip(aug_bboxes, aug_labels):
@@ -74,7 +74,7 @@ def augmentation(augmentation_count=10):
 
 
 def main():
-    augmentations_count=10
+    augmentations_count=5
     augmentation(augmentations_count)
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@ from ultralytics import YOLO
 
 
 def train_model(name):
-    model = YOLO('yolo11n.pt')
+    model = YOLO('yolo11s.pt')
 
     model.train(
         data='dataset.yaml',
@@ -15,7 +15,7 @@ def train_model(name):
 
 
 def main():
-    name = 'custom_yolo_training7'
+    name = 'custom_yolo_training'
     train_model(name)
 
 

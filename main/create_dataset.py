@@ -10,9 +10,9 @@ def create_dataset(folder_name):
 
     images = sorted([f for f in os.listdir(images_dir)])
 
-    # 1. Делим на train/val/test, поставил 60/20/20 т.к маленкьий датасет
-    train_val, test = train_test_split(images, test_size=0.2, random_state=42)
-    train, val = train_test_split(train_val, test_size=0.25, random_state=42)
+    # 1. Делим на train/val/test, поставил 70/20/10 т.к маленкьий датасет
+    train_val, test = train_test_split(images, test_size=0.1, random_state=42)
+    train, val = train_test_split(train_val, test_size=0.22, random_state=42)
 
     # 2. Создаём директории
     for string, obj in {'train': train, 'val': val, 'test': test}.items():
@@ -28,7 +28,7 @@ def create_dataset(folder_name):
                 f"{images_dir}/{filename}",
                 f"{dataset_images_folder}/{filename}"
             )
-            label_file = filename.replace('.png', '.txt')
+            label_file = filename.replace('.jpg', '.txt')
             shutil.copy(
                 f"{labels_dir}/{label_file}",
                 f"{dataset_labels_folder}/{label_file}"
